@@ -185,7 +185,6 @@ class _TabletViewState extends State<TabletView> {
               floatingActionButtonAnimator:
                   widget?.floatingActionButtonAnimator,
               resizeToAvoidBottomInset: widget?.resizeToAvoidBottomInset,
-              resizeToAvoidBottomPadding: widget?.resizeToAvoidBottomPadding,
               primary: widget?.primary,
               // extendBody: extendBody,
               backgroundColor: widget?.backgroundColor,

@@ -214,7 +214,6 @@ class ResponsiveListScaffold extends StatelessWidget {
           persistentFooterButtons: persistentFooterButtons,
           floatingActionButtonAnimator: floatingActionButtonAnimator,
           resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-          resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
           primary: primary,
           // extendBody: extendBody,
           backgroundColor: backgroundColor,
