@@ -1,20 +1,19 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'responsive_list.dart';
-import 'views/index.dart';
-
-export 'package:responsive_scaffold/data/classes/details.dart';
+import '../../data/classes/details.dart';
+import 'views/mobile.dart';
+import 'views/tablet.dart';
 
 class ResponsiveListScaffold extends StatelessWidget {
   ResponsiveListScaffold({
     this.tabletBreakpoint = 720.0,
-    @required this.detailBuilder,
+    required this.detailBuilder,
     this.appBar,
     this.drawer,
     this.slivers,
     this.endDrawer,
-    @required List<Widget> children,
+    required List<Widget> children,
     this.primary = true,
     // this.extendBody = false,
     this.drawerDragStartBehavior = DragStartBehavior.start,
@@ -46,13 +45,13 @@ class ResponsiveListScaffold extends StatelessWidget {
 
   ResponsiveListScaffold.builder({
     this.tabletBreakpoint = 720.0,
-    @required this.detailBuilder,
+    required this.detailBuilder,
     this.appBar,
     this.drawer,
     this.slivers,
     this.endDrawer,
-    @required int itemCount,
-    @required IndexedWidgetBuilder itemBuilder,
+    required int itemCount,
+    required IndexedWidgetBuilder itemBuilder,
     this.primary = true,
     // this.extendBody = false,
     this.drawerDragStartBehavior = DragStartBehavior.start,
@@ -85,12 +84,12 @@ class ResponsiveListScaffold extends StatelessWidget {
 
   ResponsiveListScaffold.custom({
     this.tabletBreakpoint = 720.0,
-    @required this.detailBuilder,
+    required this.detailBuilder,
     this.appBar,
     this.drawer,
     this.slivers,
     this.endDrawer,
-    @required this.childDelagate,
+    required this.childDelagate,
     this.primary = true,
     // this.extendBody = false,
     this.drawerDragStartBehavior = DragStartBehavior.start,
@@ -119,27 +118,27 @@ class ResponsiveListScaffold extends StatelessWidget {
 
   final DetailWidgetBuilder detailBuilder;
 
-  final PreferredSizeWidget appBar;
+  final PreferredSizeWidget? appBar;
 
-  final Widget drawer, endDrawer;
+  final Widget? drawer, endDrawer;
 
-  final List<Widget> slivers;
+  final List<Widget>? slivers;
 
-  final Widget floatingActionButton;
+  final Widget? floatingActionButton;
 
-  final FloatingActionButtonLocation floatingActionButtonLocation;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
 
-  final Widget bottomNavigationBar;
+  final Widget? bottomNavigationBar;
 
-  final Widget bottomSheet;
+  final Widget? bottomSheet;
 
-  final List<Widget> persistentFooterButtons;
+  final List<Widget>? persistentFooterButtons;
 
-  final FloatingActionButtonAnimator floatingActionButtonAnimator;
+  final FloatingActionButtonAnimator? floatingActionButtonAnimator;
 
-  final bool resizeToAvoidBottomPadding;
+  final bool? resizeToAvoidBottomPadding;
 
-  final bool resizeToAvoidBottomInset;
+  final bool? resizeToAvoidBottomInset;
 
   final bool primary;
 
@@ -147,23 +146,23 @@ class ResponsiveListScaffold extends StatelessWidget {
 
   final DragStartBehavior drawerDragStartBehavior;
 
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
-  final Key scaffoldKey, detailScaffoldKey;
+  final Key? scaffoldKey, detailScaffoldKey;
 
-  final Widget tabletItemNotSelected;
+  final Widget? tabletItemNotSelected;
 
-  final Flexible tabletSideMenu;
+  final Flexible? tabletSideMenu;
 
   final int tabletFlexListView;
 
   final int tabletFlexDetailView;
 
-  final bool mobileRootNavigator;
+  final bool? mobileRootNavigator;
 
-  final NavigatorState mobileNavigator;
+  final NavigatorState? mobileNavigator;
 
-  final Widget nullItems, emptyItems;
+  final Widget? nullItems, emptyItems;
 
   final SliverChildDelegate childDelagate;
 
@@ -175,32 +174,32 @@ class ResponsiveListScaffold extends StatelessWidget {
           // Tablet
           return TabletView.custom(
             key: key,
-            nullItems: nullItems,
-            emptyItems: emptyItems,
-            scaffoldkey: scaffoldKey,
-            detailScaffoldKey: detailScaffoldKey,
+            nullItems: nullItems!,
+            emptyItems: emptyItems!,
+            scaffoldkey: scaffoldKey!,
+            detailScaffoldKey: detailScaffoldKey!,
             drawerDragStartBehavior: drawerDragStartBehavior,
-            floatingActionButton: floatingActionButton,
-            floatingActionButtonLocation: floatingActionButtonLocation,
-            bottomNavigationBar: bottomNavigationBar,
-            bottomSheet: bottomSheet,
-            persistentFooterButtons: persistentFooterButtons,
-            floatingActionButtonAnimator: floatingActionButtonAnimator,
-            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-            resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
+            floatingActionButton: floatingActionButton!,
+            floatingActionButtonLocation: floatingActionButtonLocation!,
+            bottomNavigationBar: bottomNavigationBar!,
+            bottomSheet: bottomSheet!,
+            persistentFooterButtons: persistentFooterButtons!,
+            floatingActionButtonAnimator: floatingActionButtonAnimator!,
+            resizeToAvoidBottomInset: resizeToAvoidBottomInset!,
+            resizeToAvoidBottomPadding: resizeToAvoidBottomPadding!,
             primary: primary,
             // extendBody: extendBody,
-            backgroundColor: backgroundColor,
-            drawer: drawer,
-            endDrawer: endDrawer,
-            appBar: appBar,
-            slivers: slivers,
+            backgroundColor: backgroundColor!,
+            drawer: drawer!,
+            endDrawer: endDrawer!,
+            appBar: appBar!,
+            slivers: slivers!,
             detailBuilder: detailBuilder,
             childDelagate: childDelagate,
             flexDetailView: tabletFlexDetailView,
             flexListView: tabletFlexListView,
-            sideMenu: tabletSideMenu,
-            itemNotSelected: tabletItemNotSelected,
+            sideMenu: tabletSideMenu!,
+            itemNotSelected: tabletItemNotSelected!,
           );
         }
 
@@ -221,14 +220,14 @@ class ResponsiveListScaffold extends StatelessWidget {
           endDrawer: endDrawer,
           appBar: appBar,
           body: MobileView.custom(
-            useRootNavigator: mobileRootNavigator,
-            nullItems: nullItems,
-            emptyItems: emptyItems,
-            slivers: slivers,
-            detailScaffoldKey: detailScaffoldKey,
+            useRootNavigator: mobileRootNavigator!,
+            nullItems: nullItems!,
+            emptyItems: emptyItems!,
+            slivers: slivers!,
+            detailScaffoldKey: detailScaffoldKey!,
             detailBuilder: detailBuilder,
             childDelagate: childDelagate,
-            navigator: mobileNavigator,
+            navigator: mobileNavigator!,
           ),
         );
       },

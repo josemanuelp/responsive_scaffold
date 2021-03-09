@@ -3,11 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import 'common/index.dart';
+import 'common/details.dart';
+import 'common/section_list.dart';
+import 'common/sections.dart';
 
 class ThreeColumnNavigation extends StatefulWidget {
   ThreeColumnNavigation({
-    @required this.sections,
+    required this.sections,
     this.showDetailsArrows = true,
     this.expandedIconData = Icons.fullscreen_exit,
     this.collapsedIconData = Icons.fullscreen,
@@ -17,20 +19,20 @@ class ThreeColumnNavigation extends StatefulWidget {
     this.title,
   });
 
-  final Color backgroundColor;
-  final Widget bottomAppBar;
+  final Color? backgroundColor;
+  final Widget? bottomAppBar;
   final IconData expandedIconData, collapsedIconData;
   final bool initiallyExpanded;
   List<MainSection> sections;
   final bool showDetailsArrows;
-  final Text title;
+  final Text? title;
 
   @override
   _ThreeColumnNavigationState createState() => _ThreeColumnNavigationState();
 }
 
 class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
-  AutoScrollController controller;
+  late AutoScrollController controller;
 
   bool _expanded = true;
   int _listIndex = 0;
@@ -85,9 +87,9 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                   Container(
                     width: 300,
                     child: Scaffold(
-                      backgroundColor: widget?.backgroundColor,
+                      backgroundColor: widget.backgroundColor,
                       appBar: AppBar(
-                        title: widget?.title,
+                        title: widget.title,
                         leading: IconButton(
                           icon: Icon(widget.expandedIconData),
                           onPressed: () {
@@ -111,7 +113,7 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                           }
                         },
                       ),
-                      bottomNavigationBar: widget?.bottomAppBar,
+                      bottomNavigationBar: widget.bottomAppBar,
                     ),
                   ),
                 Container(
@@ -164,7 +166,7 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
                       },
                     ),
                     bottomNavigationBar:
-                        widget.sections[_sectionIndex]?.bottomAppBar,
+                        widget.sections[_sectionIndex].bottomAppBar,
                   ),
                 ),
                 Expanded(
@@ -221,7 +223,7 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
             },
           ),
           appBar: AppBar(
-            title: widget.sections[_sectionIndex]?.label,
+            title: widget.sections[_sectionIndex].label,
           ),
           body: SectionList(
             controller: controller,
@@ -250,7 +252,7 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
               }
             },
           ),
-          bottomNavigationBar: widget.sections[_sectionIndex]?.bottomAppBar,
+          bottomNavigationBar: widget.sections[_sectionIndex].bottomAppBar,
         );
       },
     );
@@ -259,9 +261,9 @@ class _ThreeColumnNavigationState extends State<ThreeColumnNavigation> {
 
 class MenuButton extends StatelessWidget {
   const MenuButton({
-    Key key,
-    @required GlobalKey<ScaffoldState> scaffoldKey,
-  })  : _scaffoldKey = scaffoldKey,
+    Key? key,
+    required GlobalKey<ScaffoldState> scaffoldKey,
+  })   : _scaffoldKey = scaffoldKey,
         super(key: key);
 
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -280,11 +282,11 @@ class MenuButton extends StatelessWidget {
 
 class SectionsDrawer extends StatelessWidget {
   const SectionsDrawer({
-    Key key,
-    @required int sectionIndex,
-    @required this.sectionChanged,
-    @required this.sections,
-  })  : _sectionIndex = sectionIndex,
+    Key? key,
+    required int sectionIndex,
+    required this.sectionChanged,
+    required this.sections,
+  })   : _sectionIndex = sectionIndex,
         super(key: key);
 
   final List<MainSection> sections;
@@ -307,15 +309,15 @@ class SectionsDrawer extends StatelessWidget {
 
 class MainSection {
   const MainSection({
-    @required this.itemBuilder,
-    @required this.itemCount,
-    @required this.getDetails,
-    @required this.icon,
-    @required this.label,
+    required this.itemBuilder,
+    required this.itemCount,
+    required this.getDetails,
+    required this.icon,
+    required this.label,
     this.bottomAppBar,
   });
 
-  final Widget bottomAppBar;
+  final Widget? bottomAppBar;
   final Icon icon;
   final int itemCount;
   final Text label;
@@ -328,14 +330,14 @@ class MainSection {
 
 class DetailsWidget {
   const DetailsWidget({
-    @required this.child,
+    required this.child,
     this.actions,
     this.title,
     this.bottomAppBar,
   });
 
-  final List<Widget> actions;
-  final Widget bottomAppBar;
+  final List<Widget>? actions;
+  final Widget? bottomAppBar;
   final Widget child;
-  final Text title;
+  final Text? title;
 }
